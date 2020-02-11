@@ -1,7 +1,16 @@
+const prefix = "http://localhost:7070/";
+
+/* パターン0 */
+// これはうまくいかない
+// const xhr1 = new XMLHttpRequest();
+// xhr1.open("GET", prefix + "a.txt");
+// xhr1.send();
+// console.log(xhr1.response);
+
 /* パターン1 */
 // 1ファイルだけならまあなんとかわかる
 // const xhr1 = new XMLHttpRequest();
-// xhr1.open("GET", "http://localhost:7070/a.txt");
+// xhr1.open("GET", prefix + "a.txt");
 // xhr1.addEventListener("load", event => console.log(xhr1.response));
 // xhr1.send();
 
@@ -9,13 +18,13 @@
 // コールバック地獄
 // 複数ファイルになるとネストされてつらい
 // const xhr1 = new XMLHttpRequest();
-// xhr1.open("GET", "http://localhost:7070/a.txt");
+// xhr1.open("GET", prefix + "a.txt");
 // xhr1.addEventListener("load", event => {
 //   const xhr2 = new XMLHttpRequest();
-//   xhr2.open("GET", "http://localhost:7070/b.txt");
+//   xhr2.open("GET", prefix + "b.txt");
 //   xhr2.addEventListener("load", event => {
 //     const xhr3 = new XMLHttpRequest();
-//     xhr3.open("GET", "http://localhost:7070/c.txt");
+//     xhr3.open("GET", prefix + "c.txt");
 //     xhr3.addEventListener("load", event => {
 //       console.log(xhr3.response);
 //     });
@@ -38,9 +47,10 @@ function openFile(url, onload) {
   });
   xhr.send();
 }
-
-openFile("http://localhost:7070/a.txt", (event, xhr) => {
-  openFile("http://localhost:7070/b.txt", (event, xhr) => {
-    openFile("http://localhost:7070/c.txt", (event, xhr) => {});
+openFile(prefix + "a.txt", (event, xhr) => {
+  openFile(prefix + "b.txt", (event, xhr) => {
+    openFile(prefix + "c.txt", (event, xhr) => {});
   });
 });
+
+console.log("これが最終行です");
