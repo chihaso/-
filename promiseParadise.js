@@ -4,7 +4,7 @@ function openFile(url) {
     xhr.open("GET", url);
     xhr.addEventListener("load", e => {
       console.log(xhr.responseText);
-      // onFulfilled();
+      onFulfilled();
     });
     xhr.send();
   });
