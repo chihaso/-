@@ -1,6 +1,6 @@
 # asynchronous_study
 コールバック、もしくはプロミスで非同期処理を実行するサンプルプログラムです。
-以下のブログを参考人させていただきました。
+以下のブログを参考にさせていただきました。
 
 * [Promiseとasync/awaitでJavaScriptの非同期処理をシンプルに記述する](https://sbfl.net/blog/2016/07/13/simplifying-async-code-with-promise-and-async-await/)
 * [PromiseによるJavaScript非同期処理レシピ集](https://sbfl.net/blog/2019/11/04/promise-cookbook/#i-5)
